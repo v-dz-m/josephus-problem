@@ -1,5 +1,9 @@
 <?php
+require_once "autoload.php";
 
+use Joseph\Node;
+use Joseph\Circle;
+use Joseph\Killer;
 ?>
 
 <!doctype html>
