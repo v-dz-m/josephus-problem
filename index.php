@@ -14,9 +14,15 @@ if ($_GET['number']) {
         $circle->insertNode(new Node($i + 1));
     }
     $killer = new Killer($circle);
-    $killer->killExceptOne($d);
+    $current = $circle->getFirst();
 
-    $result = $circle->getFirst()->getNumber();
+    while ($circle->size > 1) {
+        $pray = $killer->kill($current, $d);
+        $current = $pray->getNext();
+        $circle->removeNode($pray);
+    }
+
+    $result = $current->getNumber();
 }
 ?>
 

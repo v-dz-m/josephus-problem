@@ -11,17 +11,12 @@ class Killer
         $this->prays = $input;
     }
 
-    public function killExceptOne(int $step)
+    public function kill(Node $current, int $step): Node
     {
-        $current = $this->prays->getFirst();
-
-        while ($this->prays->size > 1) {
-            for ($i = 0; $i < $step - 1; $i++) {
-                $current = $current->getNext();
-            }
-            $temp = $current->getNext();
-            $this->prays->removeNode($current);
-            $current = $temp;
+        for ($i = 0; $i < $step - 1; $i++) {
+            $current = $current->getNext();
         }
+
+        return $current;
     }
 }
