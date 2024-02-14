@@ -4,6 +4,39 @@ require_once "autoload.php";
 use Joseph\Node;
 use Joseph\Circle;
 use Joseph\Killer;
+
+function is_josephus_alive(Killer $killer, int $n, int $d): bool
+{
+    $circle = new Circle();
+
+    for ($i = 0; $i < $n; $i++) {
+        $circle->insertNode(new Node($i + 1));
+    }
+    $current = $circle->getFirst();
+
+    while ($circle->size > 1) {
+        $pray = $killer->kill($current, $d);
+        if ($pray->getNumber() === 1) {
+            return false;
+        }
+        $current = $pray->getNext();
+        $circle->removeNode($pray);
+    }
+
+    return true;
+}
+
+if ($_GET['number']) {
+    $n = $_GET['number'];
+    $killer = new Killer();
+    $result = [];
+
+    for ($i = 1; $i <= $n; $i++) {
+        if (is_josephus_alive($killer, $n, $i)) {
+            $result[] = $i;
+        }
+    }
+}
 ?>
 
 <!doctype html>
@@ -35,7 +68,12 @@ use Joseph\Killer;
         <a href="first.php" class="btn btn-success" role="button">Clear</a>
     </form>
     <h2 id="result" class="my-3 h2">
-        Please, fill in the n number
+        <?php if (isset($result)): ?>
+            The d numbers for Josephus <?= "(n=$n)" ?>:
+            <?= (count($result) > 0) ? join(", ", $result) : "do not exist" ?>
+        <?php else: ?>
+            Please, fill in the n number
+        <?php endif; ?>
     </h2>
 </main>
 <footer>

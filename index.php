@@ -13,7 +13,7 @@ if ($_GET['number']) {
     for ($i = 0; $i < $n; $i++) {
         $circle->insertNode(new Node($i + 1));
     }
-    $killer = new Killer($circle);
+    $killer = new Killer();
     $current = $circle->getFirst();
 
     while ($circle->size > 1) {

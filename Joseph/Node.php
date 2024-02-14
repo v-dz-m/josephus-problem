@@ -4,7 +4,7 @@ namespace Joseph;
 
 class Node
 {
-    private string $number;
+    private int $number;
     private Node $next;
     private Node $previous;
 
@@ -15,7 +15,7 @@ class Node
         $this->previous = $this;
     }
 
-    public function getNumber(): string
+    public function getNumber(): int
     {
         return $this->number;
     }
