@@ -56,8 +56,8 @@ if ($_GET['number']) {
     <h2 class="h2 my-3">
         Condition:
         <small class="text-muted">There are n warriors in the circle, numbered from 1 to n. When keeping count in a
-            circle, every d-th person is crossed out until there is one left. Find out what d number(s) should Josephus
-            say to survive if he is the first warrior. Limit on the numbers: n <= d.</small>
+            circle, every d-th person is crossed out until there is one left. Find out what d number(s) Josephus should
+            say to survive if he is the first warrior. Limit on the numbers: d <= n.</small>
     </h2>
     <form action="first.php" method="get">
         <div class="mb-3">
@@ -76,15 +76,6 @@ if ($_GET['number']) {
         <?php endif; ?>
     </h2>
 </main>
-<footer>
-    <div class="container">
-        <h2>See also:</h2>
-        <ul>
-            <li><a href="index.php">Standard version</a></li>
-            <li><a href="first.php">Josephus first version</a></li>
-            <li><a href="">Christians and turks version</a></li>
-        </ul>
-    </div>
-</footer>
+<?php include "template-footer.php"; ?>
 </body>
 </html>
