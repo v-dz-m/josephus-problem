@@ -29,8 +29,7 @@ if ($_GET['number']) {
     do {
         $result[] = $survived->getNumber();
         $survived = $survived->getNext();
-    }
-    while ($survived !== $first);
+    } while ($survived !== $first);
 }
 ?>
 
@@ -68,11 +67,12 @@ if ($_GET['number']) {
     </form>
     <h2 id="result" class="my-3 h2">
         <?php if (isset($result)): ?>
-            The positions of the survived warriors <?= "(n=$n, 2n=$total, d=$d)" ?>: <?= join(", ", $result) ?>
+            The k-positions of the survived warriors <?= "(n=$n, 2n=$total, d=$d)" ?>: <?= join(", ", $result) ?>
         <?php else: ?>
             Please, fill in the form fields
         <?php endif; ?>
     </h2>
 </main>
+<?php include "template-footer.php"; ?>
 </body>
 </html>
