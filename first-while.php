@@ -29,12 +29,13 @@ function is_josephus_alive(Killer $killer, int $n, int $d): bool
 if ($_GET['number']) {
     $n = $_GET['number'];
     $killer = new Killer();
-    $result = [];
+    $result = 1;
 
-    for ($i = 1; $i <= $n; $i++) {
-        if (is_josephus_alive($killer, $n, $i)) {
-            $result[] = $i;
+    while (true) {
+        if (is_josephus_alive($killer, $n, $result)) {
+            break;
         }
+        $result++;
     }
 }
 ?>
@@ -56,21 +57,21 @@ if ($_GET['number']) {
     <h2 class="h2 my-3">
         Condition:
         <small class="text-muted">There are n warriors in the circle, numbered from 1 to n. When keeping count in a
-            circle, every d-th person is crossed out until there is one left. Find out what d number(s) should Josephus
-            say to survive if he is the first warrior. Limit on the numbers: n <= d.</small>
+            circle, every d-th person is crossed out until there is one left. Find out what the least d number should
+            Josephus say to survive if he is the first warrior.</small>
     </h2>
-    <form action="first.php" method="get">
+    <form action="first-while.php" method="get">
         <div class="mb-3">
             <label class="form-label" for="number">Enter n:</label>
             <input type="text" class="form-control" id="number" name="number" placeholder="i.e. 6" required>
         </div>
         <button type="submit" class="btn btn-primary">Calculate</button>
-        <a href="first.php" class="btn btn-success" role="button">Clear</a>
+        <a href="first-while.php" class="btn btn-success" role="button">Clear</a>
     </form>
     <h2 id="result" class="my-3 h2">
         <?php if (isset($result)): ?>
-            The d numbers for Josephus <?= "(n=$n)" ?>:
-            <?= (count($result) > 0) ? join(", ", $result) : "do not exist" ?>
+            The least d number for Josephus <?= "(n=$n)" ?>:
+            <?= $result ?>
         <?php else: ?>
             Please, fill in the n number
         <?php endif; ?>

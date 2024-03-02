@@ -43,7 +43,7 @@ if ($_GET['number']) {
     <h2 class="h2 my-3">
         Condition:
         <small class="text-muted">There are n warriors in the circle, numbered from 1 to n. When keeping count in a
-            circle, every d-th person is crossed out until there is one left. Find out what position should Josephus
+            circle, every d-th person is crossed out until there is one left. Find out what position k should Josephus
             take to survive.</small>
     </h2>
     <form action="index.php" method="get">
