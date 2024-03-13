@@ -5,6 +5,19 @@ use Joseph\Node;
 use Joseph\Circle;
 use Joseph\Killer;
 
+if ($_GET['number']) {
+    $n = $_GET['number'];
+    $killer = new Killer();
+    $result = 1;
+
+    while (true) {
+        if (is_josephus_alive($killer, $n, $result)) {
+            break;
+        }
+        $result++;
+    }
+}
+
 function is_josephus_alive(Killer $killer, int $n, int $d): bool
 {
     $circle = new Circle();
@@ -24,19 +37,6 @@ function is_josephus_alive(Killer $killer, int $n, int $d): bool
     }
 
     return true;
-}
-
-if ($_GET['number']) {
-    $n = $_GET['number'];
-    $killer = new Killer();
-    $result = 1;
-
-    while (true) {
-        if (is_josephus_alive($killer, $n, $result)) {
-            break;
-        }
-        $result++;
-    }
 }
 ?>
 
